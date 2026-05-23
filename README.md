@@ -1,39 +1,57 @@
-# Lightweight-Real-Time-Image-Captioning-for-Mobile-Systems App for Visually Impaired
-A lightweight real-time image captioning framework for mobile systems with efficient deep learning deployment and assistive vision applications.
+# SeeAround Android Client
 
-# Lightweight Real-Time Image Captioning for Mobile Systems
-
-This repository provides the implementation resources associated with the paper:
+This repository contains the Android client application used in the paper:
 
 **Lightweight Real-Time Image Captioning for Mobile Systems: An Optimized Multimodal Framework and Benchmarking Study**
 
-The project includes image captioning models based on CNN-RNN encoder-decoder architectures and deployment resources for the SeeAround Android assistive application.
+The application integrates image captioning, OCR, translation, and text-to-speech feedback in a mobile assistive pipeline for visually impaired users.
 
 ## Main Features
 
-- Image captioning using InceptionV3-GRU, ResNet50-GRU, and InceptionV4-LSTM architectures
-- Caption-length optimization from 22 to 18 tokens
-- MSCOCO 2017 training and evaluation pipeline
-- Frozen ProtoBuf model export for Android deployment
-- OCR, translation, and text-to-speech integration in the SeeAround mobile application
-- Real-time mobile testing on Samsung Galaxy A11
+- Android-based assistive vision application
+- On-device image caption generation using a frozen TensorFlow ProtoBuf model
+- OCR support using mobile OCR backends
+- Translation support for multilingual accessibility
+- Text-to-speech audio feedback
+- Real-time deployment tested on Samsung Galaxy A11
+- Support for French, Spanish, Italian, Arabic, and Hindi
 
-## Main Results
+## Mobile Deployment Configuration
 
-The optimized InceptionV4-LSTM model achieved:
+| Component | Specification |
+|---|---|
+| Deep learning framework | TensorFlow Android |
+| Model format | Frozen ProtoBuf (.pb) |
+| Inference runtime | On-device Android inference |
+| Input resolution | 299 × 299 × 3 RGB |
+| Numerical precision | FP32 |
+| Batch size | 1 image |
+| Caption length | 18 tokens |
+| OCR engines | Google Mobile Vision API, Firebase Vision Text Detector, Google Firebase ML Kit, TessTwo-Android |
+| Translation engines | Google Cloud Translation API, Google ML Kit, Firebase ML Kit, Google Translate API |
+| Speech synthesis | Android TextToSpeech |
+| Supported languages | French, Spanish, Italian, Arabic, Hindi |
+| Inference mode | Offline captioning with framework-dependent OCR and translation support |
 
-- BLEU-4: 0.4189
-- ROUGE-L: 0.688
-- SPICE: 0.0599
-- Inference time: 178 ms/image
-- Throughput: 5.6 FPS
-- Memory usage: 410 MB
-- Composite operational score: 92.6%
+## Runtime Performance
 
-## Dataset
+The deployed application was evaluated on a Samsung Galaxy A11 smartphone.
 
-The models were trained and evaluated using MSCOCO 2017.
+| Metric | Value |
+|---|---|
+| Inference latency | 178 ms/image |
+| Throughput | 5.6 FPS |
+| Memory usage | 410 MB |
+| Model parameters | 43M |
 
-Download the dataset from:
+## Project Structure
 
-https://cocodataset.org
+```text
+app/
+ ├── src/
+ │   ├── main/
+ │   │   ├── assets/        # Frozen ProtoBuf model and vocabulary/idmap files
+ │   │   ├── java/          # Android Java source code
+ │   │   └── res/           # Layouts, drawables, and UI resources
+ ├── build.gradle
+ └── AndroidManifest.xml
