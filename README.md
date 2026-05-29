@@ -51,7 +51,7 @@ app/
  ├── src/
  │   ├── main/
  │   │   ├── assets/        # Frozen ProtoBuf model and vocabulary/idmap files
- │   │   ├── java/          # Android Java source code
+ │   │   ├── java/          # Android Java source code in MainActivity.java
  │   │   └── res/           # Layouts, drawables, and UI resources
  ├── build.gradle
  └── AndroidManifest.xml
